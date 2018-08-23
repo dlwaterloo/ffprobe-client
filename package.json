@@ -3,5 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "dependencies": {}
+  "scripts": {
+    "fix": "standard --fix",
+    "lint": "standard",
+    "test": "yarn run lint && ./scripts/gen-output.sh && nyc mocha --reporter spec --timeout 10000"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "dirty-chai": "^2.0.1",
+    "mocha": "^5.2.0",
+    "nock": "^9.6.1",
+    "nyc": "^12.0.2",
+    "standard": "^11.0.1"
+  }
 }
