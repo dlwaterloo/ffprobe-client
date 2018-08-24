@@ -1,9 +1,10 @@
 language: node_js
-before_script:
+before_install:
   - sudo add-apt-repository -y ppa:mc3man/trusty-media
   - sudo apt-get -qq update
   - sudo apt-get install -y ffmpeg
-  - bash ./scripts/gen-output.sh
+  - sudo chmod +x ./scripts/gen-output.sh
+  - ./scripts/gen-output.sh
 script:
   - npm run test
 cache:
