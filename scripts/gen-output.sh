@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 ARGS="-show_streams -show_format -print_format json"
 URL="https://www.w3schools.com/html/mov_bbb.webm"
