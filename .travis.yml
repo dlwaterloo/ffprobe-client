@@ -5,7 +5,7 @@ before_install:
   - sudo apt-get install -y ffmpeg
   - sudo chmod +x ./scripts/gen-output.sh
   - cat ./scripts/gen-output.sh
-  - sudo ./scripts/gen-output.sh
+  - bash ./scripts/gen-output.sh
 script:
   - npm run test
 cache:
