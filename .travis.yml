@@ -12,6 +12,8 @@ node_js:
   - '10'
   - '9'
   - '8'
+sudo: required
+dist: trusty
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
