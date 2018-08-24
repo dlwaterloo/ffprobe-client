@@ -1,12 +1,27 @@
 {
   "name": "ffprobe-client",
+  "description": "A zero-dependency, promise-based Node.js API for ffprobe",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": "Philip Scott <pscott@zeptohost.com>",
+  "keywords": [
+    "ffmpeg",
+    "ffprobe",
+    "video",
+    "audio",
+    "stream",
+    "media",
+    "json"
+  ],
   "scripts": {
     "fix": "standard --fix",
     "lint": "standard",
     "test": "yarn run lint && ./scripts/gen-output.sh && nyc mocha --reporter spec --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ScottyFillups/ffprobe-client.git"
   },
   "devDependencies": {
     "chai": "^4.1.2",
