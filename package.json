@@ -1,7 +1,7 @@
 {
   "name": "ffprobe-client",
   "description": "A zero-dependency, promise-based Node.js API for ffprobe",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "main": "index.js",
   "license": "MIT",
   "author": "Philip Scott <pscott@zeptohost.com>",
@@ -17,7 +17,9 @@
   "scripts": {
     "fix": "standard --fix",
     "lint": "standard",
-    "test": "yarn run lint && ./scripts/gen-output.sh && nyc mocha --reporter spec --timeout 10000"
+    "test": "yarn run lint && ./scripts/gen-output.sh && nyc mocha --reporter spec --timeout 10000",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,8 @@
     "mocha": "^5.2.0",
     "nock": "^9.6.1",
     "nyc": "^12.0.2",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "semantic-release": "^15.9.9",
+    "travis-deploy-once": "^5.0.2"
   }
 }
