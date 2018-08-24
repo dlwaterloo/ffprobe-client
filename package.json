@@ -17,7 +17,7 @@
   "scripts": {
     "fix": "standard --fix",
     "lint": "standard",
-    "test": "yarn run lint && ./scripts/gen-output.sh && nyc mocha --reporter spec --timeout 10000",
+    "test": "yarn run lint && sudo ./scripts/gen-output.sh && nyc mocha --reporter spec --timeout 10000",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
   },
