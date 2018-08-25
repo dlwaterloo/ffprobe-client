@@ -6,6 +6,7 @@ before_script:
   - sudo chmod 0777 -R ./node_modules/mocha/lib
   - sudo chmod 0777 ./index.js
   - sudo chmod 0777 ./test/test.js
+  - echo $PATH
 script:
   - npm run test
 cache:
