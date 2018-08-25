@@ -1,5 +1,6 @@
 language: node_js
 before_script:
+  - sudo chmod 0777 ./test/bin/linux/x64/ffprobe
   - sudo cp ./test/bin/linux/x64/ffprobe /usr/bin/ffprobe
   - sudo chmod 0777 ./node_modules/.bin/mocha
   - sudo chmod 0777 ./node_modules/.bin/nyc
@@ -7,6 +8,7 @@ before_script:
   - sudo chmod 0777 ./index.js
   - sudo chmod 0777 ./test/test.js
   - echo $PATH
+  - ffprobe -h
 script:
   - npm run test
 cache:
