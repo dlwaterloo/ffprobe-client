@@ -1,5 +1,5 @@
 language: node_js
-before_install:
+before_script:
   - sudo cp ./test/bin/linux/x64/ffprobe /usr/bin/ffprobe
   - sudo chmod 0777 ./node_modules/.bin/mocha
 script:
