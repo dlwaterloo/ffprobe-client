@@ -5,7 +5,6 @@
 const chai = require('chai')
 const dirtyChai = require('dirty-chai')
 const expectedData = require('./data')
-const ffprobeBinary = require('ffprobe-static')
 const ffprobe = require('../')
 const nock = require('nock')
 const url = require('url')
@@ -13,16 +12,14 @@ const url = require('url')
 chai.use(dirtyChai)
 
 const { expect } = chai
-const validTestCases = [
+const validPathCases = [
   {
-    type: 'local',
-    description: 'Behaviour with local ffprobe installation',
+    description: 'Behaviour with default ffprobe path',
     config: undefined
   },
   {
-    type: 'static',
-    description: 'Behaviour with ffprobe-static installation',
-    config: { path: ffprobeBinary.path }
+    description: 'Behaviour with custom path',
+    config: { path: '/usr/bin/ffprobe' }
   }
 ]
 
@@ -40,43 +37,6 @@ describe('ffprobe-client', () => {
       .replyWithFile(200, filePath, { 'Content-Type': 'video/webm' })
   })
 
-  validTestCases.forEach((validTestCase) => {
-    describe(validTestCase.description, () => {
-      it('resolves to correct JSON when target is a file', async () => {
-        try {
-          const data = await ffprobe(filePath, validTestCase.config)
-
-          expect(data).to.deep.equal(expectedData[validTestCase.type].file)
-        } catch (err) {
-          console.error(err)
-
-          expect.fail()
-        }
-      })
-
-      it('resolves to correct JSON when target is a url', async () => {
-        try {
-          const data = await ffprobe(fileUrl, validTestCase.config)
-
-          expect(data).to.deep.equal(expectedData[validTestCase.type].url)
-        } catch (err) {
-          console.error(err)
-
-          expect.fail()
-        }
-      })
-
-      it('rejects when input is malformed', async () => {
-        try {
-          await ffprobe(invalid, validTestCase.config)
-          expect.fail()
-        } catch (err) {
-          expect(err).to.be.an('error')
-        }
-      })
-    })
-  })
-
   describe('Invalid binary path', () => {
     it('rejects an ENOENT error', async () => {
       try {
@@ -86,6 +46,43 @@ describe('ffprobe-client', () => {
       } catch (err) {
         expect(err.code).to.equal('ENOENT')
       }
+    })
+  })
+
+  validPathCases.forEach((validPathCase) => {
+    describe(validPathCase.description, () => {
+      it('resolves to correct JSON when target is a file', async () => {
+        try {
+          const data = await ffprobe(filePath, validPathCase.config)
+
+          expect(data).to.deep.equal(expectedData.file)
+        } catch (err) {
+          console.error(err)
+
+          expect.fail()
+        }
+      })
+
+      it('resolves to correct JSON when target is a url', async () => {
+        try {
+          const data = await ffprobe(fileUrl, validPathCase.config)
+
+          expect(data).to.deep.equal(expectedData.url)
+        } catch (err) {
+          console.error(err)
+
+          expect.fail()
+        }
+      })
+
+      it('rejects when input is malformed', async () => {
+        try {
+          await ffprobe(invalid, validPathCase.config)
+          expect.fail()
+        } catch (err) {
+          expect(err).to.be.an('error')
+        }
+      })
     })
   })
 })

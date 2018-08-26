@@ -3,10 +3,12 @@ before_script:
   - sudo add-apt-repository -y ppa:mc3man/trusty-media
   - sudo apt-get -qq update
   - sudo apt-get install -y ffmpeg
-  - sudo chmod +x -R ./node_modules/ffprobe-static/bin/
   - sudo chmod +x -R ./scripts/
+  - ./scripts/gen-output.sh
 script:
   - npm run test
+after_script:
+  - npm run coverage
 cache:
   directories:
     - ~/.npm
