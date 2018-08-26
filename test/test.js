@@ -15,11 +15,18 @@ const { expect } = chai
 const validPathCases = [
   {
     description: 'Behaviour with default ffprobe path',
-    config: undefined
+    config: undefined,
+    env: null
   },
   {
-    description: 'Behaviour with custom path',
-    config: { path: '/usr/bin/ffprobe' }
+    description: 'Behaviour with passed custom path',
+    config: { path: '/usr/bin/ffprobe' },
+    env: null
+  },
+  {
+    description: 'Behaviour with environment variable path',
+    config: undefined,
+    env: '/usr/bin/ffprobe'
   }
 ]
 
@@ -35,6 +42,8 @@ describe('ffprobe-client', () => {
     nock(`${parsedUrl.protocol}//${parsedUrl.host}`)
       .get(parsedUrl.path)
       .replyWithFile(200, filePath, { 'Content-Type': 'video/webm' })
+
+    process.env.FFPROBE_PATH = ''
   })
 
   describe('Invalid binary path', () => {
@@ -50,6 +59,10 @@ describe('ffprobe-client', () => {
   })
 
   validPathCases.forEach((validPathCase) => {
+    if (validPathCase.env) {
+      process.env.FFPROBE_PATH = validPathCase.env
+    }
+
     describe(validPathCase.description, () => {
       it('resolves to correct JSON when target is a file', async () => {
         try {

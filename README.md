@@ -23,25 +23,35 @@ Below is a comparison between `ffprobe-client` and other popular `ffprobe` libra
 ## Usage
 
 ```js
+// optional: specify a binary path, see config
+process.env.FFPROBE_PATH = '/usr/bin/ffprobe'
 const ffprobe = require('ffprobe-client')
 
 const file = './path/to/file'
 const url = 'http://www.example.com/foo.webm'
 
-ffprobe(file).then((fileData) => {
-  console.log(fileData)
+// promise
+ffprobe('./myfile.webm')
+  .then(data => console.log(data.format.duration))
+  .catch(err => console.error(err))
 
-  return ffprobe(url)
-}).then((urlData) => {
-  console.log(urlData)
-}).catch(err => console.error(err))
+// async/await
+(async () => {
+  try {
+    const data = await ffprobe('http://www.example.com/foo.webm')
+
+    console.log(data)
+  } catch (err) {
+    console.error(err)
+  }
+})()
 ```
 
 ## API
 
 #### ffprobe(target, [config])
 
-Returns a `Promise` which resolves to the `JSON` outputted by `ffprobe`.
+Returns a `Promise` which resolves to a `JSON` outputted by `ffprobe`.
 
 #### target
 
@@ -59,7 +69,7 @@ A configuration object, see details below.
 
 Type: `String`
 
-The path of the `ffprobe` binary. If omitted, the path will default to `ffprobe`.
+The path of the `ffprobe` binary. If omitted, the path will be set to the `FFPROBE_PATH` environment variable. If the environment variable is not set, `ffprobe` will be invoked directly (ie. `ffprobe [...]`).
 
 ## Payload
 

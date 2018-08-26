@@ -20,7 +20,7 @@ function ffprobeExecFile (path, params) {
 }
 
 function ffprobe (target, config = {}) {
-  const path = config.path || 'ffprobe'
+  const path = config.path || process.env.FFPROBE_PATH || 'ffprobe'
   const params = [
     '-show_streams',
     '-show_format',
