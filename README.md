@@ -1,5 +1,10 @@
 # ffprobe-client
 
+[![npm version](https://badge.fury.io/js/ffprobe-client.svg)](https://badge.fury.io/js/ffprobe-client)
+[![Build Status](https://travis-ci.org/ScottyFillups/ffprobe-client.svg?branch=master)](https://travis-ci.org/ScottyFillups/ffprobe-client)
+[![Coverage Status](https://coveralls.io/repos/github/ScottyFillups/ffprobe-client/badge.svg?branch=coverage)](https://coveralls.io/github/ScottyFillups/ffprobe-client?branch=coverage)
+[![install size](https://packagephobia.now.sh/badge?p=ffprobe-client)](https://packagephobia.now.sh/result?p=ffprobe-client)
+
 A zero-dependency, promise-based Node.js API for `ffprobe`.
 
 Below is a comparison between `ffprobe-client` and other popular `ffprobe` libraries, as of August 23<sup>rd</sup>, 2018:
