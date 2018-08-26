@@ -5,19 +5,14 @@
 const chai = require('chai')
 const dirtyChai = require('dirty-chai')
 const expectedData = require('./data')
+const ffprobeBinary = require('ffprobe-static')
 const ffprobe = require('../')
-const path = require('path')
 const nock = require('nock')
 const url = require('url')
 
 chai.use(dirtyChai)
 
 const { expect } = chai
-const ffprobeBinary = path.join(
-  __dirname,
-  './bin/linux/x64/ffprobe'
-)
-
 const validTestCases = [
   {
     type: 'local',
@@ -27,7 +22,7 @@ const validTestCases = [
   {
     type: 'static',
     description: 'Behaviour with ffprobe-static installation',
-    config: { path: ffprobeBinary }
+    config: { path: ffprobeBinary.path }
   }
 ]
 
