@@ -4,7 +4,7 @@ before_script:
   - sudo apt-get -qq update
   - sudo apt-get install -y ffmpeg
   - sudo chmod +x -R ./node_modules/ffprobe-static/bin/
-  - sudo chmod +x ./scripts/gen-output.sh
+  - sudo chmod +x -R ./scripts/
 script:
   - npm run test
 cache:
