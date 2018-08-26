@@ -15,8 +15,8 @@
     "json"
   ],
   "scripts": {
-    "fix": "standard --fix",
-    "lint": "standard",
+    "fix": "eslint . --fix",
+    "lint": "eslint .",
     "test": "yarn run lint && nyc mocha --timeout 10000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "semantic-release": "semantic-release",
@@ -30,11 +30,16 @@
     "chai": "^4.1.2",
     "coveralls": "^3.0.2",
     "dirty-chai": "^2.0.1",
+    "eslint": "^5.4.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.0",
+    "eslint-plugin-standard": "^3.1.0",
     "mocha": "^5.2.0",
     "nock": "^9.6.1",
     "nyc": "^12.0.2",
     "semantic-release": "^15.9.9",
-    "standard": "^11.0.1",
     "travis-deploy-once": "^5.0.2"
   }
 }
