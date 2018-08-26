@@ -21,8 +21,9 @@ A clear and concise description of what you expected to happen.
 
 **Environment (please complete the following information):**
  - OS: [e.g. Linux x64]
- - Linking: [e.g. Static]
  - Version (ffprobe): [e.g. 4.0.2]
+ - Linking: [e.g. Static]
+
 
 **Additional context**
 Add any other context about the problem here.
