@@ -28,6 +28,9 @@ const ffprobe = require('ffprobe-client')
 const file = './path/to/file'
 const url = 'http://www.example.com/foo.webm'
 
+// optional
+process.env.FFPROBE_PATH = '/usr/bin/ffprobe'
+
 ffprobe(file).then((fileData) => {
   console.log(fileData)
 
@@ -59,7 +62,7 @@ A configuration object, see details below.
 
 Type: `String`
 
-The path of the `ffprobe` binary. If omitted, the path will default to `ffprobe`.
+The path of the `ffprobe` binary. If omitted, the path will be set to the `FFPROBE_PATH` environment variable. If the environment variable is not set, `ffprobe` will be invoked directly (ie. `ffprobe [...]`).
 
 ## Payload
 
