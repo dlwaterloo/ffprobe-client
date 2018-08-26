@@ -9,7 +9,12 @@ echo "Generating ffprobe output!"
 
 ffprobe $ARGS $FILE > "$OUT/local-file-output.json" 2> /dev/null
 ffprobe $ARGS $URL > "$OUT/local-url-output.json" 2> /dev/null
-./test/bin/linux/x64/ffprobe $ARGS $FILE > "$OUT/static-file-output.json" 2> /dev/null
-./test/bin/linux/x64/ffprobe $ARGS $URL > "$OUT/static-url-output.json" 2> /dev/null
+./node_modules/ffprobe-static/bin/linux/x64/ffprobe $ARGS $FILE > "$OUT/static-file-output.json" 2> /dev/null
+./node_modules/ffprobe-static/bin/linux/x64/ffprobe $ARGS $URL > "$OUT/static-url-output.json" 2> /dev/null
+
+cat "$OUT/local-file-output.json"
+cat "$OUT/local-url-output.json"
+cat "$OUT/static-file-output.json"
+cat "$OUT/static-url-output.json"
 
 echo "Finished generating ffprobe output!"
