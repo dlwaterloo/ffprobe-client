@@ -36,7 +36,7 @@ ffprobe('./myfile.webm')
   .catch(err => console.error(err))
 
 // async/await
-(async () => {
+async function run () {
   try {
     const data = await ffprobe('http://www.example.com/foo.webm')
 
@@ -44,7 +44,9 @@ ffprobe('./myfile.webm')
   } catch (err) {
     console.error(err)
   }
-})()
+}
+
+run()
 ```
 
 ## API
