@@ -2,9 +2,16 @@
 
 const { execFile } = require('child_process')
 
-function ffprobeExecFile (path, params) {
+/**
+ * Executes ffprobe with provided arguments
+ * @func    ffprobeExecFile
+ * @param   {String}        path Path of the ffprobe binary
+ * @param   {Array<String>} args Array of arguments passed to ffprobe
+ * @returns {Promise<Object>}    Promise that resolves to the ffprobe JSON output
+ */
+function ffprobeExecFile (path, args) {
   return new Promise((resolve, reject) => {
-    execFile(path, params, (err, stdout, stderr) => {
+    execFile(path, args, (err, stdout, stderr) => {
       if (err) {
         if (err.code === 'ENOENT') {
           reject(err)
@@ -19,9 +26,17 @@ function ffprobeExecFile (path, params) {
   })
 }
 
+/**
+ * Analyzes a video with ffprobe
+ * @func    ffprobe
+ * @param   {String} target   The file path or remote URL of the video
+ * @param   {Object} [config={}]             A configuration object
+ * @param   {String} [config.path='ffprobe'] Path of the ffprobe binary
+ * @returns {Promise<Object>} Promise that resolves to the ffprobe JSON output
+ */
 function ffprobe (target, config = {}) {
   const path = config.path || process.env.FFPROBE_PATH || 'ffprobe'
-  const params = [
+  const args = [
     '-show_streams',
     '-show_format',
     '-print_format',
@@ -29,7 +44,7 @@ function ffprobe (target, config = {}) {
     target
   ]
 
-  return ffprobeExecFile(path, params)
+  return ffprobeExecFile(path, args)
 }
 
 module.exports = ffprobe
