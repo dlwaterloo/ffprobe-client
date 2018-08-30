@@ -5,8 +5,8 @@ const { execFile } = require('child_process')
 /**
  * Executes ffprobe with provided arguments
  * @func    ffprobeExecFile
- * @param   {string}        path Path of the ffprobe binary
- * @param   {Array<string>} args Array of arguments passed to ffprobe
+ * @param   {String}        path Path of the ffprobe binary
+ * @param   {Array<String>} args Array of arguments passed to ffprobe
  * @returns {Promise<Object>}    Promise that resolves to the ffprobe JSON output
  */
 function ffprobeExecFile (path, args) {
@@ -29,9 +29,9 @@ function ffprobeExecFile (path, args) {
 /**
  * Analyzes a video with ffprobe
  * @func    ffprobe
- * @param   {string} target   The file path or remote URL of the video
+ * @param   {String} target   The file path or remote URL of the video
  * @param   {Object} [config={}]             A configuration object
- * @param   {string} [config.path='ffprobe'] Path of the ffprobe binary
+ * @param   {String} [config.path='ffprobe'] Path of the ffprobe binary
  * @returns {Promise<Object>} Promise that resolves to the ffprobe JSON output
  */
 function ffprobe (target, config = {}) {
