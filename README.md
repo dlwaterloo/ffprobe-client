@@ -171,3 +171,7 @@ Below is an example payload. Note that keys will be omitted if `ffprobe` fails t
   }
 }
 ```
+
+## Testing Locally
+
+Run `./scripts/gen-output.sh` before running the tests; this command will generate the expected JSON snapshot.

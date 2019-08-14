@@ -17,7 +17,7 @@
   "scripts": {
     "fix": "eslint . --fix",
     "lint": "eslint .",
-    "test": "yarn run lint && nyc mocha --timeout 10000",
+    "test": "eslint . && nyc mocha --timeout 10000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once"
@@ -39,7 +39,7 @@
     "mocha": "^5.2.0",
     "nock": "^9.6.1",
     "nyc": "^14.1.1",
-    "semantic-release": "^15.9.9",
+    "semantic-release": "^15.13.21",
     "travis-deploy-once": "^5.0.2"
   }
 }
