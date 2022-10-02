@@ -13,12 +13,7 @@ function ffprobeExecFile (path, args) {
   return new Promise((resolve, reject) => {
     execFile(path, args, (err, stdout, stderr) => {
       if (err) {
-        if (err.code === 'ENOENT') {
           reject(err)
-        } else {
-          const ffprobeErr = new Error(stderr.split('\n').pop())
-          reject(ffprobeErr)
-        }
       } else {
         resolve(JSON.parse(stdout))
       }
